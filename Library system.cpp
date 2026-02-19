@@ -29,5 +29,12 @@ public:
     return email;
    }
 
+   virtual void displayInfo() {
+       cout<<"User ID: " <<id<<endl;
+       cout<<"Name: "<< name << endl;
+       cout<<"Email: "<< email << endl;
+       }
+
 };
+
 
