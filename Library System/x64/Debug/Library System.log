@@ -1,2 +1,2 @@
 ﻿  Library system.cpp
-  Library System.vcxproj -> C:\Users\visne\OneDrive\Documents\Library system\Library System\x64\Debug\Library System.exe
+C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Library system.cpp(80,1): error C2471: cannot update program database 'C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Library System\x64\Debug\vc145.pdb'
