@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+//Adding some info
 class User{
 private:
     int id;
