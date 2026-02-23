@@ -75,12 +75,5 @@ class Member : public User {
 int main() {
     Member m1(67,"Ian","Ian@gmail.com");
 
-    m1.displayInfo();
-    m1.borrowBook();
-    m1.borrowBook();
-    m1.returnBook();
-    m1.displayInfo();
-
-    return 0;
 }
 
