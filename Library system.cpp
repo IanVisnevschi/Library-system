@@ -51,17 +51,17 @@ class Member : public User {
 
         void borrowBook() {
             borrowedBooks++;
-            cout<<getName()<<"borrowed a book. Total borrowed: " << borrowedBooks << endl;
+            cout<<getName()<<" borrowed a book. Total borrowed: " << borrowedBooks << endl;
 
        }
        
         void returnBook() {
             if (borrowedBooks > 0) {
                 borrowedBooks --;
-                cout<<getName()<<"returned a book. Total borrowed: " <<borrowedBooks << endl;
+                cout<<getName()<<" returned a book. Total borrowed: " <<borrowedBooks << endl;
             }
             else {
-                cout <<getName()<<"has no books to return. \n"<<endl;
+                cout <<getName()<<" has no books to return. \n"<<endl;
             }
 
        }
@@ -126,17 +126,28 @@ public:
 };
 
 int main() {
-    Book b1(130, "48 laws of power", "Robert G");
+   // Book b1(130, "48 laws of power", "Robert G");
 
-    cout << "initial book info: \n";
-    b1.displayBook();
+   // cout << "initial book info: \n";
+    //b1.displayBook();
 
-    cout << "\n Borrowing the book\n";
-    b1.setStatus("Borrowed");
+    //cout << "\n Borrowing the book\n";
+    //b1.setStatus("Borrowed");
 
-    cout << "\nUpdate Book info:\n";
-    b1.displayBook();
+    //cout << "\nUpdate Book info:\n";
+    //b1.displayBook();
 
+    //return 0;
+
+    User u1(1,"Ian", "ian@gmail.com");
+    cout<<"User created: "<< u1.getName()<<endl;
+    cout<<"---------------------"<<endl;
+    
+    Member m1(2,"Denis","Denis@gmail.com");
+    cout<<"Member created: "<< m1.getName()<<endl;
+
+    m1.borrowBook();
+    m1.borrowBook();
     return 0;
 
 

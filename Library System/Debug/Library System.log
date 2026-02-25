@@ -1,2 +1,1 @@
-﻿  Library system.cpp
-  Library System.vcxproj -> C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Debug\Library System.exe
+﻿LINK : fatal error LNK1201: error writing to program database 'C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Debug\Library System.pdb'; check for insufficient disk space, invalid path, or insufficient privilege
