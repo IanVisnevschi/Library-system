@@ -73,7 +73,72 @@ class Member : public User {
 };
 
 
+
+class Book {
+private:
+    int bookId;
+    string  title;
+    string  author;
+    string status;
+
+public:
+    Book(int id, string t, string a) {
+        bookId = id;
+        title = t;
+        author = a;
+        status = "Available";
+    }
+
+    int getBookId() {
+        return bookId;
+
+    }
+
+    string getTitle() {
+        return title;
+
+    }
+
+    string getAuthor() {
+        return author;
+
+    }
+
+    string getStatus() {
+        return status;
+
+    }
+
+    void setStatus(string newStatus) {
+        status = newStatus;
+    }
+
+    void displayBook() {
+        cout << "Book ID: " << bookId << endl;
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Status: " << status << endl;
+
+    }
+
+
+
+};
+
 int main() {
-    Member m1(67,"Ian","Ian@gmail.com");
+    Book b1(130, "48 laws of power", "Robert G");
+
+    cout << "initial book info: \n";
+    b1.displayBook();
+
+    cout << "\n Borrowing the book\n";
+    b1.setStatus("Borrowed");
+
+    cout << "\nUpdate Book info:\n";
+    b1.displayBook();
+
+    return 0;
+
 
 }
+
