@@ -1,1 +1,4 @@
-﻿LINK : fatal error LNK1201: error writing to program database 'C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Debug\Library System.pdb'; check for insufficient disk space, invalid path, or insufficient privilege
+﻿  Library system.cpp
+C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Library system.cpp(159,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Library system.cpp(194,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Library system.cpp(202,1): error C2471: cannot update program database 'C:\Users\visne\OneDrive\Documents\Library system\Repo folder\Library System\Debug\vc145.pdb'

@@ -125,31 +125,77 @@ public:
 
 };
 
+class Librarian : public User {
+public:
+
+    Librarian(int userId, string userName, string userEmail) : User(userId, userName, userEmail) {}
+
+    void addBook(vector<Book>& books) {
+        int id;
+        string title;
+        string author;
+
+        cout << "Enter Book ID: ";
+        cin >> id;
+
+        cout << "Enter Book Title: ";
+        cin.ignore();
+        getline(cin, title);
+
+        cout << "Enter Author Name: ";
+        getline(cin, author);
+
+        Book newBook(id, title, author);
+        books.push_back(newBook);
+
+        cout << "Book added successfuly\n";
+
+    }
+    void removeBook(vector<Book>& books) {
+        int id;
+        cout << "Enter Book ID to remove: ";
+        cin >> id;
+
+        for (int i = 0; i < books.size(); i++) {
+            if (books[i].getBookId() == id) {
+                books.erase(books.begin() + i);
+                cout << "Book removed successfuly\n";
+                return;
+            }
+        }
+        cout << "Book not found.\n";
+    }
+    void displayInfo()override {
+        User::displayInfo();
+        cout << "Role: Librarian\n";
+    }
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
 int main() {
-   // Book b1(130, "48 laws of power", "Robert G");
 
-   // cout << "initial book info: \n";
-    //b1.displayBook();
+    vector<Book> books;
+    Librarian lib1(1, "Jacob", "Jacob@gmail.com");
 
-    //cout << "\n Borrowing the book\n";
-    //b1.setStatus("Borrowed");
+    lib1.addBook(books);
 
-    //cout << "\nUpdate Book info:\n";
-    //b1.displayBook();
+    cout << "\nAll Books:\n";
+    for (int i = 0; i < books.size(); i++) {
+        books[i].displayBook();
 
-    //return 0;
-
-    User u1(1,"Ian", "ian@gmail.com");
-    cout<<"User created: "<< u1.getName()<<endl;
-    cout<<"---------------------"<<endl;
-    
-    Member m1(2,"Denis","Denis@gmail.com");
-    cout<<"Member created: "<< m1.getName()<<endl;
-
-    m1.borrowBook();
-    m1.borrowBook();
+    }
     return 0;
 
 
 }
-
