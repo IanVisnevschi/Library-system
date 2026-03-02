@@ -173,6 +173,38 @@ public:
 
 };
 
+class Administrator : public User {
+private:
+    int borrowingLimit;
+
+public:
+    Administrator(int userId, string userName, string userEmail) : User(userId, userName, userEmail) {
+        borrowingLimit = 5;
+
+    }
+
+    void setBorrowingLimit() {
+        int newLimit;
+        cout << "Enter new borrowing limit: ";
+        cin >> newLimit;
+
+        borrowingLimit = newLimit;
+        cout << "Borrowing limit updated to " << borrowingLimit << endl;
+
+    }
+
+    int getBorrowingLimit() {
+        return borrowingLimit;
+
+    }
+
+    void displayInfo() override {
+        User::displayInfo();
+        cout << "Role: Administrator\n";
+        cout << "Current Borrowing Limit: " << borrowingLimit << endl;
+    }
+};
+
 
 
 
@@ -185,16 +217,14 @@ public:
 
 int main() {
 
-    vector<Book> books;
-    Librarian lib1(1, "Jacob", "Jacob@gmail.com");
+    Administrator admin1(99, "Tom", "Tom@library.com");
 
-    lib1.addBook(books);
+    admin1.displayInfo();
 
-    cout << "\nAll Books:\n";
-    for (int i = 0; i < books.size(); i++) {
-        books[i].displayBook();
+    admin1.setBorrowingLimit();
+    cout << "\nUpdated Info:\n";
+    admin1.displayInfo();
 
-    }
     return 0;
 
 
