@@ -3,9 +3,9 @@
 #include <string>
 using namespace std;
 
-int currentDay = 0;
+int currentDay = 0; //keeps track of current day in the system for the due dates
 
-//Adding some info
+// class that all users inherit from 
 class User{
 protected:
     int id;
@@ -13,18 +13,18 @@ protected:
     string email;
     
 public:
-   User(int i, string n, string e){
+   User(int i, string n, string e){ //constructor 
       id = i;
       name = n;
       email = e;
    }
 
-
+   // returns user ID
    int getId(){
     return id;
    }
 
-
+   //displays user info
    virtual void displayInfo() {
        cout<<"ID: " <<id<<endl;
        cout<<"Name: "<< name << endl;
@@ -34,18 +34,18 @@ public:
 };
 
 
-
+//books class that stores data about books
 class Book {
 private:
     int bookId;
     string  title;
     string  author;
-    string status;
+    string status; //shows if books is acvailable
     int borrowedDay;
     int reservedDay;
 
 public:
-    Book(int id, string t, string a) {
+    Book(int id, string t, string a) { // constructor for book class
         bookId = id;
         title = t;
         author = a;
@@ -53,39 +53,39 @@ public:
         borrowedDay = -1;
         reservedDay = -1;
     }
-
+    //returns book id
     int getBookId() {
         return bookId;
 
     }
-
+    //returns title
     string getTitle() {
         return title;
 
     }
-
+    //returns author
     string getAuthor() {
         return author;
 
     }
-
+    //retuens status available/reserved
     string getStatus() {
         return status;
 
     }
-
+    // returns the day book was borrowed 
     int getBorrowedDay() {
         return borrowedDay;
     }
-
+    //returns the day book was reserved
     int getReservedDay() {
         return reservedDay;
     }
-
+    //
     void setStatus(string s) {
         status = s;
     }
-
+    
     void setBorrowedDay(int d) {
         borrowedDay = d;
 
@@ -94,7 +94,7 @@ public:
     void setReservedDay(int d) {
         reservedDay = d;
     }
-
+    //diusplays info about book
     void displayBook() {
         cout << "Book ID: " << bookId
             << "| Title: " << title
@@ -108,14 +108,14 @@ public:
 
 class Member : public User {
     private:
-       int borrowedCount;
+       int borrowedCount; //keeps track of how many books were borrowed
 
     public:
         Member(int i, string n, string e)
             : User(i,n,e) {
             borrowedCount = 0;
        }
-
+       //allows members to search fior books 
         void searchBook(vector<Book>& books) {
             string title;
             cin.ignore();
@@ -132,7 +132,7 @@ class Member : public User {
 
 
        }
-
+       //allows user to borrow a book
         void borrowBook(vector<Book>& books, int limit) {
             if (borrowedCount >= limit) {
                 cout<<"you reached borrowing limit.\n";
@@ -155,7 +155,7 @@ class Member : public User {
            cout<<"Book not available.\n";
         }
             
-       
+       //allows user to return book
         void returnBook(vector<Book>& books) {
             int id;
             cout<<"Enter Book ID: ";
@@ -171,7 +171,7 @@ class Member : public User {
              }
              cout<<"Book not found.\n";
         }
-
+        //allows member to borrow book
         void reserveBook(vector<Book>& books) {
             int id;
             cout<<"Enter Book ID: ";
@@ -188,7 +188,7 @@ class Member : public User {
             }
             cout<<"Book not available.\n";
         }
-
+        // members can check notifications
         void checkNotifications(vector<Book>& books) {
             for (int i = 0; i < books.size();i++) {
                 if (books[i].getStatus() == "Borrowed") {
@@ -212,7 +212,7 @@ class Librarian : public User {
 public:
 
     Librarian(int i, string n, string e) : User(i,n,e) {}
-
+    //allows librarian to add book
     void addBook(vector<Book>& books) {
         int id;
         string title;
@@ -232,6 +232,7 @@ public:
         cout << "Book added successfuly\n";
 
     }
+    //allows librarian to remove book
     void removeBook(vector<Book>& books) {
         int id;
         cout << "Enter Book ID to remove: ";
@@ -246,6 +247,7 @@ public:
         }
         cout << "Book not found.\n";
     }
+    //displays reports of members with overdue books
     void overdueReport(vector<Book>& books) {
         cout<<"Overdue Books: \n";
         for (int i = 0;i < books.size();i++) {
@@ -261,20 +263,20 @@ public:
 
 class Administrator : public User {
 private:
-    int borrowingLimit;
+    int borrowingLimit;//keeps track of borrowing limit
 
 public:
     Administrator(int i, string n, string e) : User(i,n,e) {
         borrowingLimit = 5;
 
     }
-
+    //allows admin to set borrowing limit
     void setBorrowingLimit() {
         cout << "Enter new borrowing limit: ";
         cin >> borrowingLimit;
         }
 
-
+        //returns borrowing limit
     int getLimit() {
         return borrowingLimit;
 
@@ -282,14 +284,14 @@ public:
 
    
 };
-
+//displays available books
 void showAvailableBooks(vector<Book>& books) {
     cout << "Available Books:\n";
     for (int i = 0;i < books.size();i++) {
         if (books[i].getStatus() == "Available") books[i].displayBook();
     }
 }
-
+//checks if reservations have expired
 void updateReservations(vector<Book>& books) {
     for (int i = 0;i < books.size();i++) {
         if (books[i].getStatus() == "Reserved" && currentDay - books[i].getReservedDay() > 3) {
